@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% block title %}Delete task{% endblock %}
 {% block content %}
-    <div class="center-column mt-5">
-
-        <p>Are you sure want to delete? " <span class="delete-task"><b>{{ task }}</b></span> "</p>
-        <div class= "delete-btn">
-            <a class="btn btn-info" href="{% url 'list' %}">Cancel</a>
-            <form method="post" action="">
-                {% csrf_token %}
-                <input class="btn btn-danger" type="submit" name="Conform" value="Delete">
-            </form>
+    <div class="row text-center " id="delete-page">
+        <div class="card col-11 col-sm-11 col-md-4  mt-5">
+            <p>Are you sure want to delete? " <span class="delete-task"><b>{{ task }}</b></span> "</p>
+            <div class="delete-btn">
+                <a class="btn btn-info" href="{% url 'list' %}">Cancel</a>
+                <form method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-danger" type="submit" name="Conform"
+                           value="Delete">
+                </form>
+            </div>
         </div>
-
     </div>
 {% endblock %}
