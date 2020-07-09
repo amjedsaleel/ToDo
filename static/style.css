@@ -42,6 +42,25 @@
         border-color: #e59400;
     }
 
-    h1 {
+    h2 {
+        color: #08004f;
+        font-weight: unset;
+        text-align: center;
+    }
+
+    label {
+        color: #08004f;
+        font-size: 20px;
+    }
+    
+    p {
+        color: #08004f;
+    }
+
+    .delete-task {
         color: red;
+    }
+
+    .delete-btn {
+        white-space: nowrap;
     }
