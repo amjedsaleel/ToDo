@@ -1,30 +1,32 @@
 {% extends 'base.html' %}
-
 {% block title %}Tasks{% endblock %}
-
 {% block content %}
-<div class="row d-flex justify-content-center">
-    <div class="card col-11 col-sm-11 col-md-6 mt-5 ">
-        <form action="/" method="post">
-            {% csrf_token %}
-            {{ form.title }}
-            <input class="btn btn-info" type="submit" name="Create Task" value="submit">
-        </form>
+    <div class="row d-flex justify-content-center">
+        <div class="card col-11 col-sm-11 col-md-6 mt-5 ">
+            <form action="/" method="post">
+                {% csrf_token %}
+                {{ form.title }}
+                <input class="btn btn-info" type="submit" name="add-task" value="submit">
+            </form>
+            <div class="col-12 col-sm-12 co-md-12 todo-list">
+                {% for task in tasks %}
+                    <div class="item-row">
+                        <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
+                        <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
 
-        <div class="col-12 col-sm-12 co-md-12 todo-list">
-            {% for task in tasks %}
-                <div class="item-row">
-                    <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
-                    <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
-
-                    {% if task.complete == True %}
-                        <strike>{{ task }}</strike>
-                    {% else %}
-                        <span>{{ task }}</span>
-                    {% endif %}
-                </div>
-            {% endfor %}
+                        {% if task.complete == True %}
+                            <strike>{{ task }}</strike>
+                        {% else %}
+                            <span>{{ task }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <form class="text-center" action="" method="post" id="delete-all-task">
+                {% csrf_token %}
+                <input class="btn btn-danger text-center" type="submit" name="delete-all-task" value="Delete All Task"
+                       onclick="return confirm('Are you sure to delete all tasks?');">
+            </form>
         </div>
     </div>
-</div>
 {% endblock %}

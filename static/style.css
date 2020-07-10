@@ -11,7 +11,7 @@ input {
 }
 
 input::placeholder {
-    color: #d3d3d3;
+    color: #686060;
 }
 
 .submit {
@@ -77,4 +77,9 @@ p {
 
 #update-task .btn {
     width: 25%;
+}
+
+#delete-all-task .btn {
+    background: red;
+    width: 50%;
 }

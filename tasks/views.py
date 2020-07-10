@@ -8,14 +8,21 @@ from .forms import *
 
 def index(request):
     tasks = Task.objects.all()
+    total_tasks = Task.objects.all().count()
+    remaining = Task.objects.exclude(complete=True).count()
+    print(remaining)
     form = TaskForm()
-    if request.method == 'POST':
+    if request.method == 'POST' and 'add-task' in request.POST:
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
         return redirect('/')
 
-    context = {'tasks': tasks, 'form': form}
+    if request.method == 'POST' and 'delete-all-task' in request.POST:
+        Task.objects.all().delete()
+        return redirect('/')
+
+    context = {'tasks': tasks, 'form': form, 'total_tasks': total_tasks}
     return render(request, 'tasks/list.html', context)
 
 
