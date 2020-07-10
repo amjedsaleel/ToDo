@@ -9,8 +9,7 @@ from .forms import *
 def index(request):
     tasks = Task.objects.all()
     total_tasks = Task.objects.all().count()
-    remaining = Task.objects.exclude(complete=True).count()
-    print(remaining)
+    remaining_tasks = Task.objects.exclude(complete=True).count()
     form = TaskForm()
     if request.method == 'POST' and 'add-task' in request.POST:
         form = TaskForm(request.POST)
@@ -22,7 +21,12 @@ def index(request):
         Task.objects.all().delete()
         return redirect('/')
 
-    context = {'tasks': tasks, 'form': form, 'total_tasks': total_tasks}
+    context = {
+        'tasks': tasks,
+        'form': form,
+        'total_tasks': total_tasks,
+        'remaining_tasks': remaining_tasks,
+    }
     return render(request, 'tasks/list.html', context)
 
 

@@ -8,7 +8,15 @@
                 {{ form.title }}
                 <input class="btn btn-info" type="submit" name="add-task" value="submit">
             </form>
-            <div class="col-12 col-sm-12 co-md-12 todo-list">
+        <div class="row ml-3 pt-2">
+            <div class="col-12 col-sm-12 col-md-3">
+                <h5 class="text-secondary notification">Total tasks: {{ total_tasks }}</h5>
+            </div>
+             <div class="col-12 col-sm-12 col-md-4">
+                <h5 class="text-warning notification">Remaining Tasks: {{ remaining_tasks }}</h5>
+            </div>
+        </div>
+            <div class="col-12 col-sm-12 co-md-12 todo-list pt-2">
                 {% for task in tasks %}
                     <div class="item-row">
                         <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>

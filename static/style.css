@@ -83,3 +83,7 @@ p {
     background: red;
     width: 50%;
 }
+
+.notification {
+    font-weight: 550;
+}
