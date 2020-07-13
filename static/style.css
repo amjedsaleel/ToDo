@@ -85,5 +85,10 @@ p {
 }
 
 .notification {
-    font-weight: 550;
+    font-weight: 500;
+}
+
+footer {
+    bottom: 0;
+    color: white;
 }

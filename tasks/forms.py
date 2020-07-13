@@ -5,7 +5,9 @@ from .models import *
 
 
 class TaskForm(forms.ModelForm):
-    title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Add new task...', 'class': 'test'}))
+    title = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'Add new task...', 'class': 'test', 'autocomplete': 'off'})
+    )
 
     class Meta:
         model = Task
